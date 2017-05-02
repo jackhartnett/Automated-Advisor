@@ -30,6 +30,7 @@ import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.geometry.*;
 import javafx.scene.paint.Color;
+import javax.swing.JApplet;
 
 /**
  *
@@ -269,6 +270,8 @@ public class AutoAdvisor extends Application {
 
                                         final TextArea userTextField = new TextArea();
                                         userTextField.setEditable(false);
+                                        userTextField.setPrefRowCount(60);
+                                        userTextField.setPrefColumnCount(40);
 
                                         for (Map.Entry<String, Boolean> entry : core.map.entrySet()) {
                                             String key = entry.getKey();
@@ -337,6 +340,8 @@ public class AutoAdvisor extends Application {
 
                                                 final TextArea userTextField = new TextArea();
                                                 userTextField.setEditable(false);
+                                                userTextField.setPrefRowCount(60);
+                                                userTextField.setPrefColumnCount(40);
 
                                                 userTextField.setText(userTextField.getText() + "Core Courses: \n" + core.coreResults());
                                                 userTextField.setText(userTextField.getText() + "\n\nScience Courses: \n" + science.scienceResults());
@@ -755,6 +760,7 @@ public class AutoAdvisor extends Application {
                                 E231.setOnAction(e -> handleE231(e));
                                 CS275.setOnAction(e -> handleCS275(e));
                                 CS351.setOnAction(e -> handleCS351(e));
+                                CS365.setOnAction(e -> handleCS365BA(e));
                                 CS371.setOnAction(e -> handleCS371(e));
                                 CS375.setOnAction(e -> handleCS375(e));
                                 CS340.setOnAction(e -> handleCS340(e));
@@ -808,6 +814,8 @@ public class AutoAdvisor extends Application {
 
                                         final TextArea userTextField = new TextArea();
                                         userTextField.setEditable(false);
+                                        userTextField.setPrefRowCount(60);
+                                        userTextField.setPrefColumnCount(40);
 
                                         for (Map.Entry<String, Boolean> entry : core.map.entrySet()) {
                                             String key = entry.getKey();
@@ -877,11 +885,13 @@ public class AutoAdvisor extends Application {
 
                                                 final TextArea userTextField = new TextArea();
                                                 userTextField.setEditable(false);
+                                                userTextField.setPrefRowCount(60);
+                                                userTextField.setPrefColumnCount(40);
                                                 BSgrid.add(userTextField, 1, 1);
 
                                                 userTextField.setText(userTextField.getText() + "Core Courses: \n" + core.coreResults());
                                                 userTextField.setText(userTextField.getText() + "\n\nScience Courses: \n" + science.scienceResults());
-                                                userTextField.setText(userTextField.getText() + "\n\nElective Courses: \n" + BAElectives.breadthResults());
+                                                userTextField.setText(userTextField.getText() + "\n\nElective Courses: \n" + BAElectives.BABreadthCheck());
 
                                                 Button Done = new Button("Got It!");
                                                 HBox D = new HBox(10);
@@ -1025,6 +1035,16 @@ public class AutoAdvisor extends Application {
                 } else if (!CS351.isSelected()) {
                     BAElectives.setClass("CS351", false);
                     System.out.println("CS351 - " + BAElectives.checkClass("CS351"));
+                }
+            }
+
+            private void handleCS365BA(ActionEvent e) {
+                if (CS365.isSelected()) {
+                    BAElectives.setClass("CS365", true);
+                    System.out.println("CS365 - " + BAElectives.checkClass("CS365"));
+                } else if (!CS365.isSelected()) {
+                    BAElectives.setClass("CS365", false);
+                    System.out.println("CS365 - " + BAElectives.checkClass("CS365"));
                 }
             }
 

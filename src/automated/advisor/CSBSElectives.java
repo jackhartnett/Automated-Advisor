@@ -88,16 +88,32 @@ public class CSBSElectives {
     public String breadthResults() {
         String result = "";
         if (systems > 0 && app > 0 && theory > 0) {
-            result += "You have satisfied all breadth requirements";
+            result += "You have satisfied all breadth requirements.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                    + systems + " systems courses.\n\t"
+                    + app + " applications courses.\n\t"
+                    + theory + " theory courses. \n";
         } else {
             if (systems == 0) {
-                result += "You are missing a systems requirement\n";
+                result += "You are missing a systems requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                    + systems + " systems courses.\n\t"
+                    + app + " applications courses.\n\t"
+                    + theory + " theory courses. \n";
             }
             if(app == 0) {
-                result += "You are missing an applications requirement\n";
+                result += "You are missing an applications requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                    + systems + " systems courses.\n\t"
+                    + app + " applications courses.\n\t"
+                    + theory + " theory courses. \n";
             }
             if(theory == 0) {
-                result += "You are missing a theory requirement.\n";
+                result += "You are missing a theory requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                    + systems + " systems courses.\n\t"
+                    + app + " applications courses.\n\t"
+                    + theory + " theory courses. \n";
             }
         }
         return result;

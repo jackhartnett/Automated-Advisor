@@ -85,25 +85,59 @@ public class CSBAElectives {
 
     }
 
-    public String breadthResults() {
+    public String BABreadthCheck() {
         String result = "";
-        if (count >= 5 && (systems > 0 && app > 0 || systems > 0 && theory > 0)) {
-            result += "You have satisfied all breadth requirements";
-        } else if (count >= 5 && (app > 0 && theory > 0)) {
-            result += "You have satisfied all breadth requirements";
+
+        if (count >= 5) {
+            if (systems > 0 && app > 0) {
+                result += "You have satisfied all breadth requirements.\n\n\t"
+                        + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+            } else if (systems > 0 && theory > 0) {
+                result += "You have satisfied all breadth requirements.\n\n\t"
+                        + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+            } else if (app > 0 && theory > 0) {
+                result += "You have satisfied all breadth requirements.\n\n\t"
+                        + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+            } else {
+                result += "Although you have taken 5 electives, you must have two\n courses in distinct breadth areas.\n\n\t"
+                        + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+            }
+        } else if ((systems > 0) && (theory == 0 && app == 0)) {
+            result += "You are missing an applications or theory requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+        } else if ((app > 0) && (systems == 0 && theory == 0)) {
+            result += "You are missing a systems or theory requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
+        } else if ((theory > 0) && (systems == 0 && theory == 0)) {
+            result += "You are missing a systems or applications requirement.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                        + systems + " systems courses.\n\t"
+                        + app + " applications courses.\n\t"
+                        + theory + " theory courses. \n";
         } else {
-            if(systems > 0 && (app == 0 || theory == 0)) {
-                result += "You are missing an applications or theory requirement";
-            }
-            if(app > 0 && (systems == 0 || theory == 0)) {
-                result += "You are missing a systems and theory requirement";
-            }
-            if(theory > 0 && (systems == 0 || app == 0)) {
-                result += "You are missing a systems or applications requirement";
-            }
-        }
-        if(app == 0 && systems == 0 && theory == 0) {
-            result += "You must take five elective course. Two MUST be in distinct breadth areas";
+            result += "You must take five elective course. Two MUST be in\ndistinct breadth areas.\n\n\t"
+                    + "Your currently have taken:\n\t"
+                    + systems + " systems courses.\n\t"
+                    + app + " applications courses.\n\t"
+                    + theory + " theory courses. \n";
         }
         return result;
     }
